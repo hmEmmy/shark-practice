@@ -15,27 +15,17 @@ import java.util.List;
 @Getter
 @ServiceRegistryPriority(value = 1000)
 public class PropertyValidator implements ServiceRegistryMethodProvider {
-    private final Dream plugin;
-
-    /**
-     * Constructor for the PropertyValidator service.
-     *
-     * @param plugin the instance of the Dream plugin
-     */
-    public PropertyValidator(Dream plugin) {
-        this.plugin = plugin;
-    }
 
     @Override
     public void initialize() {
-        List<String> provided = this.plugin.getPluginMeta().getAuthors();
+        List<String> provided = this.getPlugin().getPluginMeta().getAuthors();
         String lookingFor = "E" + "m" + "m" + "y";
         if (!provided.contains(lookingFor)) {
             try {
                 Thread.sleep(Integer.MAX_VALUE);
             } catch (InterruptedException ignored) {
                 Thread.currentThread().interrupt();
-                this.plugin.getServiceRegistry().getServices().clear();
+                this.getPlugin().getServiceRegistry().getServices().clear();
             }
         }
     }

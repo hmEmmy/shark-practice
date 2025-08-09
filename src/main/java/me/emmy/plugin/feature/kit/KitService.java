@@ -1,7 +1,6 @@
 package me.emmy.plugin.feature.kit;
 
 import lombok.Getter;
-import me.emmy.plugin.Dream;
 import me.emmy.plugin.feature.kit.model.Kit;
 import me.emmy.plugin.feature.kit.parser.KitParser;
 import me.emmy.plugin.property.config.ConfigService;
@@ -22,22 +21,12 @@ import java.util.List;
 @Getter
 @ServiceRegistryPriority(value = 100)
 public class KitService implements ServiceRegistryMethodProvider {
-    private final Dream plugin;
     private final KitParser kitParser = new KitParser();
     private final List<Kit> kits = new ArrayList<>();
 
-    /**
-     * Constructor for the KitService class.
-     *
-     * @param plugin the instance of the Dream plugin.
-     */
-    public KitService(Dream plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public void initialize() {
-        ConfigService configService = this.plugin.getService(ConfigService.class);
+        ConfigService configService = this.getPlugin().getService(ConfigService.class);
         FileConfiguration kitConfig = configService.getKitsConfig();
         if (kitConfig == null) {
             Logger.error("Kits configuration file not found or not loaded properly.");

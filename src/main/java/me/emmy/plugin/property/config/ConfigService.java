@@ -1,7 +1,6 @@
 package me.emmy.plugin.property.config;
 
 import lombok.Getter;
-import me.emmy.plugin.Dream;
 import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;
@@ -20,7 +19,6 @@ import java.util.Map;
 @Getter
 @ServiceRegistryPriority(value = 10)
 public class ConfigService implements ServiceRegistryMethodProvider {
-    private final Dream plugin;
     private final Map<String, FileConfiguration> fileConfigurations = new HashMap<>();
 
     private final String[] configFiles = {
@@ -34,21 +32,12 @@ public class ConfigService implements ServiceRegistryMethodProvider {
     private FileConfiguration settingsConfig;
     private FileConfiguration kitsConfig;
 
-    /**
-     * Constructor for the ConfigService class.
-     *
-     * @param plugin the instance of the Dream plugin.
-     */
-    public ConfigService(Dream plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public void initialize() {
         for (String fileName : this.configFiles) {
             File file = this.getFile(fileName);
             if (!file.exists()) {
-                this.plugin.saveResource(fileName, false);
+                this.getPlugin().saveResource(fileName, false);
             }
             FileConfiguration config = YamlConfiguration.loadConfiguration(file);
             this.fileConfigurations.put(fileName, config);
@@ -81,7 +70,7 @@ public class ConfigService implements ServiceRegistryMethodProvider {
      * @return the File object corresponding to the file name.
      */
     public File getFile(String fileName) throws IllegalArgumentException {
-        return new File(this.plugin.getDataFolder(), fileName);
+        return new File(this.getPlugin().getDataFolder(), fileName);
     }
 
     /**

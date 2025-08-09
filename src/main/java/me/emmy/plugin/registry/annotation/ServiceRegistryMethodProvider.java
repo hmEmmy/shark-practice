@@ -1,5 +1,7 @@
 package me.emmy.plugin.registry.annotation;
 
+import me.emmy.plugin.Dream;
+
 /**
  * This interface represents a service registry data structure.
  * It provides methods to initialize and shut down the service.
@@ -21,5 +23,14 @@ public interface ServiceRegistryMethodProvider {
      * Method to shut down the given service.
      */
     default void shutdown() {
+    }
+
+    /**
+     * Returns the instance of the Dream plugin.
+     *
+     * @return the Dream plugin instance
+     */
+    default Dream getPlugin() {
+        return Dream.getInstance();
     }
 }
