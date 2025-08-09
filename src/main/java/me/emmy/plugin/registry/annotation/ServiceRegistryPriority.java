@@ -14,5 +14,11 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ServiceRegistryPriority {
-    int priority();
+    /**
+     * The priority value for the service.
+     * Higher values indicate higher priority.
+     *
+     * @return the priority value
+     */
+    int value();
 }

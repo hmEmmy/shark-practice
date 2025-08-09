@@ -52,7 +52,7 @@ public class ServiceRegistry {
             }
 
             this.services.sort(Comparator.comparingInt(service ->
-                    service.getClass().getAnnotation(ServiceRegistryPriority.class).priority()
+                    service.getClass().getAnnotation(ServiceRegistryPriority.class).value()
             ));
 
         } catch (Exception exception) {
