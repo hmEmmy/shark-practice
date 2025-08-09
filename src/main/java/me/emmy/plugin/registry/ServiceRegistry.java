@@ -67,6 +67,6 @@ public class ServiceRegistry {
      * This method iterates through each service and calls its shutdown method.
      */
     public void shutdown() {
-        this.services.forEach(ServiceRegistryMethodProvider::shutdown);
+        this.services.sort(Comparator.comparingInt(service -> service.getClass().getAnnotation(ServiceRegistryPriority.class).value()).reversed());
     }
 }
