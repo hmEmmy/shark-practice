@@ -5,8 +5,8 @@ import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ScanResult;
 import lombok.Getter;
 import me.emmy.plugin.Dream;
-import me.emmy.plugin.registry.annotation.ServiceMetadata;
-import me.emmy.plugin.registry.annotation.ServiceRegistryData;
+import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;
 
 import java.lang.reflect.Constructor;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Getter
 public class ServiceRegistry {
-    private final List<ServiceRegistryData> services = new ArrayList<>();
+    private final List<ServiceRegistryMethodProvider> services = new ArrayList<>();
     private final String PACKAGE_DIRECTORY = "me.emmy.plugin";
 
     public ServiceRegistry() {
@@ -31,16 +31,16 @@ public class ServiceRegistry {
                 .enableAnnotationInfo()
                 .scan()) {
 
-            for (ClassInfo classInfo : scanResult.getClassesWithAnnotation(ServiceMetadata.class.getName())) {
+            for (ClassInfo classInfo : scanResult.getClassesWithAnnotation(ServiceRegistryPriority.class.getName())) {
                 Class<?> clazz = classInfo.loadClass();
-                if (ServiceRegistryData.class.isAssignableFrom(clazz)) {
-                    ServiceRegistryData service;
+                if (ServiceRegistryMethodProvider.class.isAssignableFrom(clazz)) {
+                    ServiceRegistryMethodProvider service;
 
                     try {
                         Constructor<?> constructor = clazz.getDeclaredConstructor(Dream.class);
-                        service = (ServiceRegistryData) constructor.newInstance(Dream.getInstance());
+                        service = (ServiceRegistryMethodProvider) constructor.newInstance(Dream.getInstance());
                     } catch (NoSuchMethodException exception) {
-                        service = (ServiceRegistryData) clazz.getDeclaredConstructor().newInstance();
+                        service = (ServiceRegistryMethodProvider) clazz.getDeclaredConstructor().newInstance();
                     } catch (Exception exception) {
                         Logger.exception("Failed to instantiate service: " + clazz.getSimpleName(), exception);
                         continue;
@@ -52,14 +52,14 @@ public class ServiceRegistry {
             }
 
             this.services.sort(Comparator.comparingInt(service ->
-                    service.getClass().getAnnotation(ServiceMetadata.class).priority()
+                    service.getClass().getAnnotation(ServiceRegistryPriority.class).priority()
             ));
 
         } catch (Exception exception) {
             Logger.exception("Failed to initialize service registry", exception);
         }
 
-        this.services.forEach(ServiceRegistryData::initialize);
+        this.services.forEach(ServiceRegistryMethodProvider::initialize);
     }
 
     /**
@@ -67,6 +67,6 @@ public class ServiceRegistry {
      * This method iterates through each service and calls its shutdown method.
      */
     public void shutdown() {
-        this.services.forEach(ServiceRegistryData::shutdown);
+        this.services.forEach(ServiceRegistryMethodProvider::shutdown);
     }
 }

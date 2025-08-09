@@ -2,7 +2,7 @@ package me.emmy.plugin;
 
 import lombok.Getter;
 import me.emmy.plugin.registry.ServiceRegistry;
-import me.emmy.plugin.registry.annotation.ServiceRegistryData;
+import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
@@ -32,7 +32,7 @@ public class Dream extends JavaPlugin {
      * @return The service instance if found, otherwise null.
      */
     @SuppressWarnings("unchecked")
-    public <T extends ServiceRegistryData> T getService(Class<T> clazz) {
+    public <T extends ServiceRegistryMethodProvider> T getService(Class<T> clazz) {
         return (T) this.serviceRegistry.getServices().stream().filter(service -> service.getClass().equals(clazz))
                 .findFirst()
                 .orElse(null);
