@@ -25,11 +25,14 @@ public class ConfigService implements ServiceRegistryMethodProvider {
 
     private final String[] configFiles = {
             "locale.yml",
-            "settings.yml"
+            "settings.yml",
+
+            "cache/kits.yml",
     };
 
     private FileConfiguration localeConfig;
     private FileConfiguration settingsConfig;
+    private FileConfiguration kitsConfig;
 
     /**
      * Constructor for the ConfigService class.
@@ -102,6 +105,7 @@ public class ConfigService implements ServiceRegistryMethodProvider {
     private void assignConfigFields() {
         this.localeConfig = this.getFileConfiguration("locale.yml");
         this.settingsConfig = this.getFileConfiguration("settings.yml");
+        this.kitsConfig = this.getFileConfiguration("cache/kits.yml");
 
         if (this.localeConfig == null || this.settingsConfig == null) {
             Logger.error("Failed to load configuration files.");
