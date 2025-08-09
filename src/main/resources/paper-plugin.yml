@@ -1,0 +1,4 @@
+name: Dream
+version: '${project.version}'
+main: me.emmy.plugin.Dream
+api-version: '1.21'
