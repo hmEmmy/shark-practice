@@ -1,10 +1,11 @@
-package me.emmy.plugin.feature.kit.parser;
+package me.emmy.plugin.property.config.parser.impl;
 
 import me.emmy.plugin.Dream;
 import me.emmy.plugin.feature.kit.enums.KitCategory;
 import me.emmy.plugin.feature.kit.enums.KitSetting;
 import me.emmy.plugin.feature.kit.model.Kit;
 import me.emmy.plugin.property.config.ConfigService;
+import me.emmy.plugin.property.config.parser.ConfigParser;
 import me.emmy.plugin.util.Serializer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
@@ -17,17 +18,11 @@ import java.util.List;
  * @project Dream
  * @since 09/08/2025
  */
-public class KitParser {
+public class KitConfigParser implements ConfigParser<Kit> {
     private final FileConfiguration kitConfig = Dream.getInstance().getService(ConfigService.class).getKitsConfig();
 
-    /**
-     * Converts a Kit object to its configuration representation.
-     * Saves the kit data to the specified path in the kits.yml file located at "cache/kits.yml".
-     *
-     * @param path the path in the configuration file where the kit data will be stored.
-     * @param kit  the Kit object to be converted.
-     */
-    public void kitToConfig(String path, Kit kit) {
+    @Override
+    public void configToModel(String path, Kit kit) {
         this.kitConfig.set(path + ".description", kit.getDescription());
         this.kitConfig.set(path + ".disclaimer", kit.getDisclaimer());
 
@@ -48,14 +43,8 @@ public class KitParser {
         Dream.getInstance().getService(ConfigService.class).saveFileConfiguration(this.kitConfig);
     }
 
-    /**
-     * Converts a configuration section to a Kit object.
-     * Reads the kit data from the specified path in the kits.yml file located at "cache/kits.yml".
-     *
-     * @param path the path in the configuration file where the kit data is stored.
-     * @param kit  the Kit object to be populated with data from the configuration.
-     */
-    public void configToKit(String path, Kit kit) {
+    @Override
+    public void modelToConfig(String path, Kit kit) {
         kit.setDescription(this.kitConfig.getString(path + ".description"));
         kit.setDisclaimer(this.kitConfig.getString(path + ".disclaimer"));
 

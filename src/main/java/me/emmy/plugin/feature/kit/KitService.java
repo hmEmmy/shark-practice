@@ -2,7 +2,7 @@ package me.emmy.plugin.feature.kit;
 
 import lombok.Getter;
 import me.emmy.plugin.feature.kit.model.Kit;
-import me.emmy.plugin.feature.kit.parser.KitParser;
+import me.emmy.plugin.property.config.parser.impl.KitConfigParser;
 import me.emmy.plugin.property.config.ConfigService;
 import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
@@ -21,7 +21,7 @@ import java.util.List;
 @Getter
 @ServiceRegistryPriority(value = 100)
 public class KitService implements ServiceRegistryMethodProvider {
-    private final KitParser kitParser = new KitParser();
+    private final KitConfigParser kitParser = new KitConfigParser();
     private final List<Kit> kits = new ArrayList<>();
 
     @Override
@@ -42,7 +42,7 @@ public class KitService implements ServiceRegistryMethodProvider {
         for (String kitName : kitsSection.getKeys(false)) {
             String path = "kits." + kitName + ".";
             Kit kit = new Kit(kitName);
-            this.kitParser.configToKit(path, kit);
+            this.kitParser.configToModel(path, kit);
             this.kits.add(kit);
         }
     }
@@ -54,7 +54,7 @@ public class KitService implements ServiceRegistryMethodProvider {
      */
     public void saveKit(Kit kit) {
         String path = "kits." + kit.getName() + ".";
-        this.kitParser.kitToConfig(path, kit);
+        this.kitParser.modelToConfig(path, kit);
     }
 
     /**
