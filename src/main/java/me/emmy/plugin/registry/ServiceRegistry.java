@@ -67,6 +67,16 @@ public class ServiceRegistry {
      * This method iterates through each service and calls its shutdown method.
      */
     public void shutdown() {
-        this.services.sort(Comparator.comparingInt(service -> service.getClass().getAnnotation(ServiceRegistryPriority.class).value()).reversed());
+        this.services.stream()
+                .sorted(Comparator.comparingInt(service -> service.getClass().getAnnotation(ServiceRegistryPriority.class).value()).reversed())
+                .forEach(service -> {
+                    try {
+                        service.shutdown();
+                        Logger.info(service.getClass().getSimpleName() + " shutdown complete");
+                    } catch (Exception exception) {
+                        Logger.exception("Failed to shutdown service: " + service.getClass().getSimpleName(), exception);
+                    }
+                })
+        ;
     }
 }
