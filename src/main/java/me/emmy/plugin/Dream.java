@@ -22,14 +22,6 @@ public class Dream extends JavaPlugin {
         this.serviceRegistry = new ServiceRegistry();
     }
 
-    private void checkPluginAuthor() {
-        List<String> authors = this.getPluginMeta().getAuthors();
-        String author = "Emmy";
-        if (!authors.contains(author)) {
-            System.exit(1);
-        }
-    }
-
     @Override
     public void onDisable() {
         this.serviceRegistry.shutdown();
@@ -47,5 +39,13 @@ public class Dream extends JavaPlugin {
         return (T) this.serviceRegistry.getServices().stream().filter(service -> service.getClass().equals(clazz))
                 .findFirst()
                 .orElse(null);
+    }
+
+    private void checkPluginAuthor() {
+        List<String> authors = this.getPluginMeta().getAuthors();
+        String author = "Emmy";
+        if (!authors.contains(author)) {
+            System.exit(1);
+        }
     }
 }
