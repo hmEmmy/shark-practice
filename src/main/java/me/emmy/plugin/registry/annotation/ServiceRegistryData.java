@@ -14,10 +14,12 @@ public interface ServiceRegistryData {
     /**
      * Method to initialize the given service.
      */
-    default void initialize() {}
+    default void initialize() {
+    }
 
     /**
      * Method to shut down the given service.
      */
-    default void shutdown() {}
+    default void shutdown() {
+    }
 }

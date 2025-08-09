@@ -2,7 +2,6 @@ package me.emmy.plugin.util;
 
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 
 /**
