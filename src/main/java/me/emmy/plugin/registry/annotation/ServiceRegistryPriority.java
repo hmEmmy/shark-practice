@@ -5,8 +5,8 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * This annotation is used to specify the priority of a service in the service registry.
- * Services with higher priority values will be initialized before those with lower values.
- * The priority value can be set to any integer, with higher values indicating higher priority.
+ * Services with lower priority values will be initialized before those with higher values.
+ * This is useful for controlling the order of service initialization and shutdown.
  *
  * @author Emmy
  * @project Dream
