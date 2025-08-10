@@ -18,9 +18,6 @@ public class Dream extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        this.checkPluginAuthor();
-
-
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRegistry.initialize();
     }
@@ -42,13 +39,5 @@ public class Dream extends JavaPlugin {
         return (T) this.serviceRegistry.getServices().stream().filter(service -> service.getClass().equals(clazz))
                 .findFirst()
                 .orElse(null);
-    }
-
-    private void checkPluginAuthor() {
-        List<String> authors = this.getPluginMeta().getAuthors();
-        String author = "Emmy";
-        if (!authors.contains(author)) {
-            System.exit(1);
-        }
     }
 }
