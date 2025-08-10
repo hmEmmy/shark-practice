@@ -17,14 +17,22 @@ public class CC {
     private final LegacyComponentSerializer legacySerializer = LegacyComponentSerializer.legacyAmpersand();
 
     /**
-     * Parses input string which can contain legacy (&) color codes and MiniMessage tags.
+     * Translates a message using MiniMessage syntax.
      *
-     * @param message input string with & codes and/or MiniMessage tags like <red>
-     * @return Adventure Component with colors applied
+     * @param message the message to translate
+     * @return the translated Component
      */
     public @NotNull Component translate(String message) {
-        Component legacyComponent = legacySerializer.deserialize(message);
-        String miniMessageString = miniMessage.serialize(legacyComponent);
-        return miniMessage.deserialize(miniMessageString);
+        return miniMessage.deserialize(message);
+    }
+
+    /**
+     * Translates a legacy message using the legacy serializer.
+     *
+     * @param message the message to translate
+     * @return the translated Component
+     */
+    public @NotNull Component translateLegacy(String message) {
+        return legacySerializer.deserialize(message);
     }
 }

@@ -19,7 +19,9 @@ public class Dream extends JavaPlugin {
         instance = this;
 
         this.checkPluginAuthor();
+
         this.serviceRegistry = new ServiceRegistry();
+        this.serviceRegistry.initialize();
     }
 
     @Override

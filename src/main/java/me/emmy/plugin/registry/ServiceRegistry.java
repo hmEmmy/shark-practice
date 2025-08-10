@@ -45,21 +45,24 @@ public class ServiceRegistry {
                         Logger.exception("Failed to instantiate service: " + clazz.getSimpleName(), exception);
                         continue;
                     }
-
                     this.services.add(service);
-                    Logger.info(clazz.getSimpleName() + " &a✔");
                 }
             }
 
             this.services.sort(Comparator.comparingInt(service ->
                     service.getClass().getAnnotation(ServiceRegistryPriority.class).value()
             ));
-
         } catch (Exception exception) {
             Logger.exception("Failed to initialize service registry", exception);
+            throw new RuntimeException("Failed to load services.", exception);
         }
+    }
 
-        this.services.forEach(ServiceRegistryMethodProvider::initialize);
+    public void initialize() {
+        this.services.forEach(service -> {
+            service.initialize();
+            Logger.info("<aqua>" + service.getClass().getSimpleName() + " <green>✔");
+        });
     }
 
     /**

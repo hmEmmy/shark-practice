@@ -21,11 +21,12 @@ import java.util.List;
 @Getter
 @ServiceRegistryPriority(value = 100)
 public class KitService implements ServiceRegistryMethodProvider {
-    private final KitConfigParser kitParser = new KitConfigParser();
     private final List<Kit> kits = new ArrayList<>();
+    private KitConfigParser kitParser;
 
     @Override
     public void initialize() {
+        this.kitParser = new KitConfigParser();
         ConfigService configService = this.getPlugin().getService(ConfigService.class);
         FileConfiguration kitConfig = configService.getKitsConfig();
         if (kitConfig == null) {

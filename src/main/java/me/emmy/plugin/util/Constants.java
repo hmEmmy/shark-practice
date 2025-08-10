@@ -11,5 +11,5 @@ import me.emmy.plugin.Dream;
 @UtilityClass
 public class Constants {
     public String PLUGIN_NAME = Dream.getInstance().getName();
-    public String PREFIX = "§7[§b" + PLUGIN_NAME + "§7] §r";
+    public String PREFIX = "<gray>[<aqua>" + PLUGIN_NAME + "<gray>]<reset> ";
 }
