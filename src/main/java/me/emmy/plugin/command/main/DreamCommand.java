@@ -23,7 +23,7 @@ public class DreamCommand extends BaseCommand {
     public void onExecute(CommandSender sender) {
         Arrays.asList(
                 "",
-                "&5&l" + Constants.PLUGIN_NAME + " PRACTICE",
+                "&5&l" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE",
                 " &f▢ &5Author: &f" + Constants.AUTHOR,
                 " &f▢ &5Version: &f" + Constants.VERSION,
                 " &f▢ &5GitHub: &f" + Constants.GITHUB,
