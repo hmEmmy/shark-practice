@@ -51,7 +51,7 @@ public class KitParser implements Parser<Kit> {
         this.kitConfig.set(path + ".items", Serializer.serializeItemStack(kit.getItems()));
         this.kitConfig.set(path + ".armor", Serializer.serializeItemStack(kit.getArmor()));
 
-        this.kitConfig.set(path + ".category", kit.getCategory());
+        this.kitConfig.set(path + ".category", kit.getCategory().name());
 
         List<String> settingNames = kit.getSettings().stream()
                 .map(Enum::name)
