@@ -12,4 +12,8 @@ import me.emmy.plugin.Dream;
 public class Constants {
     public String PLUGIN_NAME = Dream.getInstance().getName();
     public String PREFIX = "<gray>[<aqua>" + PLUGIN_NAME + "<gray>]<reset> ";
+
+    public String AUTHOR = "Emmy";
+    public String GITHUB = "https://github.com/hmEmmy";
+    public String VERSION = Dream.getInstance().getPluginMeta().getVersion();
 }

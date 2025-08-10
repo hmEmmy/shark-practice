@@ -1,4 +1,4 @@
-package me.emmy.plugin.registry.annotation;
+package me.emmy.plugin.core.service.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

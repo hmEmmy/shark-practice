@@ -1,9 +1,7 @@
-package me.emmy.plugin.property.config.parser.impl;
+package me.emmy.plugin.core.parser.impl;
 
-import me.emmy.plugin.Dream;
-import me.emmy.plugin.feature.arena.model.Arena;
-import me.emmy.plugin.property.config.ConfigService;
-import me.emmy.plugin.property.config.parser.ConfigParser;
+import me.emmy.plugin.feature.arena.Arena;
+import me.emmy.plugin.core.parser.Parser;
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**
@@ -11,7 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
  * @project Dream
  * @since 09/08/2025
  */
-public class ArenaConfigParser implements ConfigParser<Arena> {
+public class ArenaParser implements Parser<Arena> {
     private final FileConfiguration arenasConfig = null;
 
     @Override

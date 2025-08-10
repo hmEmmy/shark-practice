@@ -1,4 +1,4 @@
-package me.emmy.plugin.registry.annotation;
+package me.emmy.plugin.core.service.annotation;
 
 import me.emmy.plugin.Dream;
 

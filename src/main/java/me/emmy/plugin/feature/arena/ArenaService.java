@@ -1,12 +1,10 @@
 package me.emmy.plugin.feature.arena;
 
-import me.emmy.plugin.feature.arena.model.Arena;
-import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListResourceBundle;
 
 /**
  * @author Emmy

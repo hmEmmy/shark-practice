@@ -1,4 +1,4 @@
-package me.emmy.plugin.feature.arena.model;
+package me.emmy.plugin.feature.arena;
 
 /**
  * @author Emmy

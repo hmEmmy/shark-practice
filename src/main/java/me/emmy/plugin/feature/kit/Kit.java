@@ -1,4 +1,4 @@
-package me.emmy.plugin.feature.kit.model;
+package me.emmy.plugin.feature.kit;
 
 import lombok.Getter;
 import lombok.Setter;

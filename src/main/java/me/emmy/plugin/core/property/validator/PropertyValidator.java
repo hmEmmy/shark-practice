@@ -1,9 +1,8 @@
-package me.emmy.plugin.property.validator;
+package me.emmy.plugin.core.property.validator;
 
 import lombok.Getter;
-import me.emmy.plugin.Dream;
-import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 
 import java.util.List;
 

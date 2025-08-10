@@ -63,6 +63,10 @@ public class Serializer {
      * @return the serialized ItemStack array
      */
     public String serializeItemStack(ItemStack[] items) {
+        if (items == null || items.length == 0) {
+            return "";
+        }
+
         try {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(outputStream);
@@ -86,6 +90,10 @@ public class Serializer {
      * @return the deserialized ItemStack array
      */
     public ItemStack[] deserializeItemStack(String data) {
+        if (data == null || data.isEmpty()) {
+            return new ItemStack[0];
+        }
+
         try {
             ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64.getDecoder().decode(data));
             BukkitObjectInputStream dataInput = new BukkitObjectInputStream(inputStream);

@@ -1,11 +1,11 @@
-package me.emmy.plugin.property.config.parser;
+package me.emmy.plugin.core.parser;
 
 /**
  * @author Emmy
  * @project Dream
  * @since 09/08/2025
  */
-public interface ConfigParser<T> {
+public interface Parser<T> {
     /**
      * Method to parse a configuration file and populate a model of type {@code T}.
      *

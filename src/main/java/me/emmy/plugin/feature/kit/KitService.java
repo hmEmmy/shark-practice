@@ -1,11 +1,10 @@
 package me.emmy.plugin.feature.kit;
 
 import lombok.Getter;
-import me.emmy.plugin.feature.kit.model.Kit;
-import me.emmy.plugin.property.config.parser.impl.KitConfigParser;
-import me.emmy.plugin.property.config.ConfigService;
-import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.core.parser.impl.KitParser;
+import me.emmy.plugin.core.property.config.ConfigService;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,11 +21,11 @@ import java.util.List;
 @ServiceRegistryPriority(value = 100)
 public class KitService implements ServiceRegistryMethodProvider {
     private final List<Kit> kits = new ArrayList<>();
-    private KitConfigParser kitParser;
+    private KitParser kitParser;
 
     @Override
     public void initialize() {
-        this.kitParser = new KitConfigParser();
+        this.kitParser = new KitParser();
         ConfigService configService = this.getPlugin().getService(ConfigService.class);
         FileConfiguration kitConfig = configService.getKitsConfig();
         if (kitConfig == null) {
@@ -46,6 +45,35 @@ public class KitService implements ServiceRegistryMethodProvider {
             this.kitParser.configToModel(path, kit);
             this.kits.add(kit);
         }
+    }
+
+    /**
+     * Removes a kit from the configuration file and the internal list.
+     *
+     * @param kit the Kit object to remove.
+     */
+    public void removeKit(Kit kit) {
+        FileConfiguration config = this.getPlugin().getService(ConfigService.class).getKitsConfig();
+        if (config == null) {
+            Logger.error("Kits configuration file not found or not loaded properly.");
+            return;
+        }
+
+        config.set("kits." + kit.getName(), null);
+        this.kits.remove(kit);
+        this.getPlugin().getService(ConfigService.class).saveFileConfiguration(config);
+        Logger.info("Kit " + kit.getName() + " has been removed successfully.");
+    }
+
+    /**
+     * Creates a new kit and saves it to the configuration file.
+     *
+     * @param kit the Kit object to create.
+     */
+    public void createKit(Kit kit) {
+        this.kits.add(kit);
+        this.saveKit(kit);
+        Logger.info("Kit " + kit.getName() + " has been created successfully.");
     }
 
     /**

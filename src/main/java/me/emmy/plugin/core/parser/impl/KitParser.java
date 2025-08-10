@@ -1,11 +1,11 @@
-package me.emmy.plugin.property.config.parser.impl;
+package me.emmy.plugin.core.parser.impl;
 
 import me.emmy.plugin.Dream;
 import me.emmy.plugin.feature.kit.enums.KitCategory;
 import me.emmy.plugin.feature.kit.enums.KitSetting;
-import me.emmy.plugin.feature.kit.model.Kit;
-import me.emmy.plugin.property.config.ConfigService;
-import me.emmy.plugin.property.config.parser.ConfigParser;
+import me.emmy.plugin.feature.kit.Kit;
+import me.emmy.plugin.core.property.config.ConfigService;
+import me.emmy.plugin.core.parser.Parser;
 import me.emmy.plugin.util.Serializer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
@@ -18,33 +18,11 @@ import java.util.List;
  * @project Dream
  * @since 09/08/2025
  */
-public class KitConfigParser implements ConfigParser<Kit> {
+public class KitParser implements Parser<Kit> {
     private final FileConfiguration kitConfig = Dream.getInstance().getService(ConfigService.class).getKitsConfig();
 
     @Override
     public void configToModel(String path, Kit kit) {
-        this.kitConfig.set(path + ".description", kit.getDescription());
-        this.kitConfig.set(path + ".disclaimer", kit.getDisclaimer());
-
-        this.kitConfig.set(path + ".material", kit.getMaterial());
-
-        this.kitConfig.set(path + ".enabled", kit.isEnabled());
-
-        this.kitConfig.set(path + ".items", Serializer.serializeItemStack(kit.getItems()));
-        this.kitConfig.set(path + ".armor", Serializer.serializeItemStack(kit.getArmor()));
-
-        this.kitConfig.set(path + ".category", kit.getCategory().name());
-
-        List<String> settingNames = kit.getSettings().stream()
-                .map(Enum::name)
-                .toList();
-        this.kitConfig.set(path + ".settings", settingNames);
-
-        Dream.getInstance().getService(ConfigService.class).saveFileConfiguration(this.kitConfig);
-    }
-
-    @Override
-    public void modelToConfig(String path, Kit kit) {
         kit.setDescription(this.kitConfig.getString(path + ".description"));
         kit.setDisclaimer(this.kitConfig.getString(path + ".disclaimer"));
 
@@ -59,6 +37,28 @@ public class KitConfigParser implements ConfigParser<Kit> {
         kit.setSettings(settings);
 
         kit.setCategory(KitCategory.valueOf(this.kitConfig.getString(path + ".category")));
+    }
+
+    @Override
+    public void modelToConfig(String path, Kit kit) {
+        this.kitConfig.set(path + ".description", kit.getDescription());
+        this.kitConfig.set(path + ".disclaimer", kit.getDisclaimer());
+
+        this.kitConfig.set(path + ".material", kit.getMaterial());
+
+        this.kitConfig.set(path + ".enabled", kit.isEnabled());
+
+        this.kitConfig.set(path + ".items", Serializer.serializeItemStack(kit.getItems()));
+        this.kitConfig.set(path + ".armor", Serializer.serializeItemStack(kit.getArmor()));
+
+        this.kitConfig.set(path + ".category", kit.getCategory());
+
+        List<String> settingNames = kit.getSettings().stream()
+                .map(Enum::name)
+                .toList();
+        this.kitConfig.set(path + ".settings", settingNames);
+
+        Dream.getInstance().getService(ConfigService.class).saveFileConfiguration(this.kitConfig);
     }
 
     /**

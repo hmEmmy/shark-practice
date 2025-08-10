@@ -1,8 +1,8 @@
-package me.emmy.plugin.property.config;
+package me.emmy.plugin.core.property.config;
 
 import lombok.Getter;
-import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.registry.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -49,8 +49,7 @@ public class ConfigService implements ServiceRegistryMethodProvider {
      * Reloads all configuration files from disk.
      */
     public void reloadConfigs() {
-        this.fileConfigurations.clear();
-        this.initialize();
+        this.assignConfigFields();
     }
 
     /**
@@ -85,7 +84,19 @@ public class ConfigService implements ServiceRegistryMethodProvider {
         }
 
         try {
-            fileConfiguration.save(this.getFile(fileConfiguration.getName()));
+            String fileName = null;
+            for (Map.Entry<String, FileConfiguration> entry : fileConfigurations.entrySet()) {
+                if (entry.getValue().equals(fileConfiguration)) {
+                    fileName = entry.getKey();
+                    break;
+                }
+            }
+
+            if (fileName != null) {
+                fileConfiguration.save(this.getFile(fileName));
+            } else {
+                Logger.error("Could not find file name for configuration to save.");
+            }
         } catch (Exception e) {
             Logger.exception("Failed to save configuration file: " + fileConfiguration.getName(), e);
         }

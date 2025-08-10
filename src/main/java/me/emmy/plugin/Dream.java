@@ -1,8 +1,8 @@
 package me.emmy.plugin;
 
 import lombok.Getter;
-import me.emmy.plugin.registry.ServiceRegistry;
-import me.emmy.plugin.registry.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.core.service.ServiceRegistry;
+import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -19,6 +19,7 @@ public class Dream extends JavaPlugin {
         instance = this;
 
         this.checkPluginAuthor();
+
 
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRegistry.initialize();
