@@ -1,4 +1,4 @@
-package me.emmy.plugin.command.main;
+package me.emmy.plugin.command.impl.main;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
