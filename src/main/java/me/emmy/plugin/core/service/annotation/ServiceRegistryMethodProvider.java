@@ -9,7 +9,7 @@ import me.emmy.plugin.Shark;
  * Service classes require the {@link ServiceRegistryPriority} annotation.
  *
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 09/08/2025
  */
 public interface ServiceRegistryMethodProvider {

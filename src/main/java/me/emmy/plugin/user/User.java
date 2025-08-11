@@ -8,7 +8,7 @@ import java.util.UUID;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 10/08/2025
  */
 @Getter

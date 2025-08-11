@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 10/08/2025
  */
 @SuppressWarnings("unused")

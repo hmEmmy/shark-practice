@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 10/08/2025
  */
 public class UserListener implements Listener {

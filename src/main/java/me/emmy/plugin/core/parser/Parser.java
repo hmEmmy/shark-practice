@@ -2,7 +2,7 @@ package me.emmy.plugin.core.parser;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 09/08/2025
  */
 public interface Parser<T> {

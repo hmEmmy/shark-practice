@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 09/08/2025
  */
 @UtilityClass

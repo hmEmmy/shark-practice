@@ -6,7 +6,7 @@ import org.bukkit.command.ConsoleCommandSender;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 09/08/2025
  */
 @UtilityClass

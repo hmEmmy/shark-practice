@@ -7,7 +7,7 @@ import lombok.Getter;
  * It provides a singleton instance that can be accessed throughout the plugin.
  *
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 09/08/2025
  */
 @Getter

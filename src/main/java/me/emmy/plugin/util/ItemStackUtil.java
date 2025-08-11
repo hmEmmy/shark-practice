@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Emmy
- * @project Shark
+ * @project shark-practice
  * @since 10/08/2025
  */
 @UtilityClass
