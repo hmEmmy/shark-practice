@@ -2,6 +2,7 @@ package me.emmy.plugin.core.service.impl;
 
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.feature.hotbar.listener.HotbarListener;
 import me.emmy.plugin.user.listener.UserListener;
 
 import java.util.Arrays;
@@ -16,7 +17,8 @@ public class ListenerService implements ServiceRegistryMethodProvider {
     @Override
     public void initialize() {
         Arrays.asList(
-                new UserListener()
+                new UserListener(),
+                new HotbarListener()
         ).forEach(listener -> this.getPlugin().getServer().getPluginManager().registerEvents(listener, this.getPlugin()));
     }
 }

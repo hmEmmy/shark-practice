@@ -5,8 +5,10 @@ import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.feature.hotbar.enums.HotbarType;
 import me.emmy.plugin.feature.hotbar.record.HotbarItem;
+import me.emmy.plugin.util.CC;
 import me.emmy.plugin.util.ItemBuilder;
 import me.emmy.plugin.util.Logger;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -75,6 +77,12 @@ public class HotbarService implements ServiceRegistryMethodProvider {
         return Collections.unmodifiableList(hotbarItems.getOrDefault(hotbarType, Collections.emptyList()));
     }
 
+    /**
+     * Applies the hotbar items to a player's inventory based on the specified hotbar type.
+     *
+     * @param player     the player whose inventory will be modified
+     * @param hotbarType the type of hotbar to apply (e.g., "LOBBY", "QUEUE", "PARTY", "EVENT", "TOURNAMENT")
+     */
     public void applyHotbarItems(Player player, HotbarType hotbarType) {
         List<HotbarItem> items = getHotbarItems(hotbarType);
         if (items.isEmpty()) {
@@ -99,5 +107,29 @@ public class HotbarService implements ServiceRegistryMethodProvider {
                 .name(item.displayName())
                 .hideMeta()
                 .build();
+    }
+
+    /**
+     * Retrieves the HotbarItem corresponding to a given ItemStack.
+     *
+     * @param itemStack the ItemStack to check
+     * @return the HotbarItem if found, otherwise null
+     */
+    public HotbarItem getHotbarItem(ItemStack itemStack) {
+        if (itemStack == null || itemStack.getType().isAir() || !itemStack.hasItemMeta() || itemStack.getItemMeta().displayName() == null) {
+            return null;
+        }
+
+        Component clickedDisplayName = itemStack.getItemMeta().displayName();
+        for (List<HotbarItem> items : hotbarItems.values()) {
+            for (HotbarItem item : items) {
+                Component storedDisplayName = CC.translate(item.displayName());
+
+                if (item.material() == itemStack.getType() && storedDisplayName.equals(clickedDisplayName)) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 }
