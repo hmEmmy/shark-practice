@@ -1,9 +1,11 @@
 package me.emmy.plugin.feature.spawn.runnable;
 
 import me.emmy.plugin.Shark;
+import me.emmy.plugin.feature.spawn.SpawnService;
 import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.util.CC;
 import me.emmy.plugin.util.Constants;
+import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
@@ -27,12 +29,17 @@ public class SpawnReminderRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
+        if (Shark.getInstance().getService(SpawnService.class).getLocations().get(this.locationType) != null) {
+            this.cancel();
+            return;
+        }
+
         Arrays.asList(
                 "",
-                "&c" + Constants.PREFIX,
+                Constants.PREFIX,
                 this.locationType.name() + " spawn is NOT set!",
-                "&7Set it using &e/spawn " + this.locationType.name().toLowerCase() + "&7.",
+                "<white>Set it using <blue>/shark setspawn " + this.locationType.name().toUpperCase() + "<white>.",
                 ""
-        ).forEach(line -> Shark.getInstance().getServer().getConsoleSender().sendMessage(CC.translate(line)));
+        ).forEach(line -> Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(CC.translate(line))));
     }
 }

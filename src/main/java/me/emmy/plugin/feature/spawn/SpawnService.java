@@ -5,6 +5,7 @@ import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.core.property.config.ConfigService;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.feature.spawn.runnable.SpawnReminderRunnable;
 import me.emmy.plugin.util.Logger;
 import me.emmy.plugin.util.Serializer;
 import org.bukkit.Location;
@@ -40,7 +41,7 @@ public class SpawnService implements ServiceRegistryMethodProvider {
                 if (location != null) {
                     this.locations.put(type, location);
                 } else {
-                    //new SpawnReminderRunnable(type).runTaskTimer(this.getPlugin(), 0L, 20L);
+                    new SpawnReminderRunnable(type).runTaskTimer(this.getPlugin(), 0L, 20L);
                 }
             } catch (Exception exception) {
                 Logger.exception("Failed to deserialize location for " + type, exception);

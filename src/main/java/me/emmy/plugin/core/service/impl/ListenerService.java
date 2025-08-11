@@ -2,7 +2,7 @@ package me.emmy.plugin.core.service.impl;
 
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
-import me.emmy.plugin.user.user.UserListener;
+import me.emmy.plugin.user.listener.UserListener;
 
 import java.util.Arrays;
 

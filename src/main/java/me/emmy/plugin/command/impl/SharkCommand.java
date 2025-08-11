@@ -1,15 +1,15 @@
-package me.emmy.plugin.command.impl.main;
+package me.emmy.plugin.command.impl;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import me.emmy.plugin.Shark;
 import me.emmy.plugin.core.property.config.ConfigService;
+import me.emmy.plugin.feature.spawn.SpawnService;
+import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.util.CC;
 import me.emmy.plugin.util.Constants;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
@@ -39,7 +39,23 @@ public class SharkCommand extends BaseCommand {
     @Subcommand("reload")
     @CommandPermission("shark.command.kit")
     public void onReload(CommandSender sender) {
+        sender.sendMessage(CC.translateLegacy("&fReloading &b&l" + Constants.PLUGIN_NAME + " PRACTICE &f..."));
         Shark.getInstance().getService(ConfigService.class).reloadConfigs();
-        sender.sendMessage(CC.translateLegacy("&a" + Constants.PLUGIN_NAME + " has been reloaded successfully."));
+        sender.sendMessage(CC.translateLegacy("&aSuccessfully reloaded &b&l" + Constants.PLUGIN_NAME + " PRACTICE &a!"));
+    }
+
+    @Subcommand("setspawn")
+    @CommandPermission("shark.command.setspawn")
+    public void onSetSpawn(Player player, LocationType type) {
+        LocationType locationType;
+        try {
+            locationType = LocationType.valueOf(type.name().toUpperCase());
+        } catch (IllegalArgumentException exception) {
+            player.sendMessage(CC.translateLegacy("&cInvalid spawn type specified! Valid types are: " + Arrays.toString(LocationType.values())));
+            return;
+        }
+
+        Shark.getInstance().getService(SpawnService.class).updateLocation(locationType, player.getLocation());
+        player.sendMessage(CC.translateLegacy("&aSpawn location for &b" + locationType.name().toLowerCase().replace("_", " ") + " &aset successfully updated!"));
     }
 }

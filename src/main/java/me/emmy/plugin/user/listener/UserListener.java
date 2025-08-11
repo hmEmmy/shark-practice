@@ -1,6 +1,8 @@
-package me.emmy.plugin.user.user;
+package me.emmy.plugin.user.listener;
 
 import me.emmy.plugin.Shark;
+import me.emmy.plugin.feature.spawn.SpawnService;
+import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.user.User;
 import me.emmy.plugin.user.UserService;
 import me.emmy.plugin.util.Logger;
@@ -32,6 +34,8 @@ public class UserListener implements Listener {
         user.save();
 
         event.joinMessage(null);
+
+        Shark.getInstance().getService(SpawnService.class).teleport(player, LocationType.LOBBY);
     }
 
     @EventHandler
