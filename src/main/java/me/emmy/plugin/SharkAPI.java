@@ -3,20 +3,20 @@ package me.emmy.plugin;
 import lombok.Getter;
 
 /**
- * This class represents the API of the {@link Dream} plugin.
+ * This class represents the API of the {@link Shark} plugin.
  * It provides a singleton instance that can be accessed throughout the plugin.
  *
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 @Getter
-public class DreamAPI {
+public class SharkAPI {
 
     @Getter
-    private static DreamAPI instance;
+    private static SharkAPI instance;
 
-    public DreamAPI() {
+    public SharkAPI() {
         instance = this;
     }
 }

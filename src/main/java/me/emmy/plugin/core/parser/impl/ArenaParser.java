@@ -6,7 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 public class ArenaParser implements Parser<Arena> {

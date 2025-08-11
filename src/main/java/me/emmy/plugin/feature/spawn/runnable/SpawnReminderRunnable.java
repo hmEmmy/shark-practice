@@ -1,17 +1,16 @@
 package me.emmy.plugin.feature.spawn.runnable;
 
-import me.emmy.plugin.Dream;
+import me.emmy.plugin.Shark;
 import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.util.CC;
 import me.emmy.plugin.util.Constants;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 public class SpawnReminderRunnable extends BukkitRunnable {
@@ -34,6 +33,6 @@ public class SpawnReminderRunnable extends BukkitRunnable {
                 this.locationType.name() + " spawn is NOT set!",
                 "&7Set it using &e/spawn " + this.locationType.name().toLowerCase() + "&7.",
                 ""
-        ).forEach(line -> Dream.getInstance().getServer().getConsoleSender().sendMessage(CC.translate(line)));
+        ).forEach(line -> Shark.getInstance().getServer().getConsoleSender().sendMessage(CC.translate(line)));
     }
 }

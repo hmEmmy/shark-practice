@@ -1,5 +1,5 @@
-name: Dream
+name: Shark
 version: '${project.version}'
-main: me.emmy.plugin.Dream
+main: me.emmy.plugin.Shark
 api-version: '1.21'
 authors: "Emmy"

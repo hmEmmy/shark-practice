@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.emmy.plugin</groupId>
-    <artifactId>Dream</artifactId>
+    <artifactId>Shark</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>Dream</name>
+    <name>Shark</name>
 
     <properties>
         <java.version>21</java.version>
@@ -17,6 +17,7 @@
     </properties>
 
     <build>
+        <finalName>${project.name}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

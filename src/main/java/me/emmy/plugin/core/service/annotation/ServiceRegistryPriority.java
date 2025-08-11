@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
  * This is useful for controlling the order of service initialization and shutdown.
  *
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 @Retention(RetentionPolicy.RUNTIME)

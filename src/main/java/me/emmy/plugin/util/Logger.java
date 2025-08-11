@@ -6,12 +6,21 @@ import org.bukkit.command.ConsoleCommandSender;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 @UtilityClass
 public class Logger {
     public final ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
+
+    /**
+     * Sends a debug message to the console with only the input message.
+     *
+     * @param message the message to log.
+     */
+    public void legacyPrint(String message) {
+        consoleSender.sendMessage(CC.translateLegacy(message));
+    }
 
     /**
      * Sends an info message to the console.

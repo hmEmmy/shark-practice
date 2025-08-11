@@ -6,10 +6,10 @@ import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
-public class Dream extends JavaPlugin {
+public class Shark extends JavaPlugin {
 
     @Getter
-    private static Dream instance;
+    private static Shark instance;
     private ServiceRegistry serviceRegistry;
 
     @Override

@@ -2,7 +2,7 @@ package me.emmy.plugin.user.enums;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 10/08/2025
  */
 public enum UserState {

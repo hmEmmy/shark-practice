@@ -4,19 +4,21 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ScanResult;
 import lombok.Getter;
-import me.emmy.plugin.Dream;
+import me.emmy.plugin.Shark;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.util.Constants;
 import me.emmy.plugin.util.Logger;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 @Getter
@@ -37,8 +39,8 @@ public class ServiceRegistry {
                     ServiceRegistryMethodProvider service;
 
                     try {
-                        Constructor<?> constructor = clazz.getDeclaredConstructor(Dream.class);
-                        service = (ServiceRegistryMethodProvider) constructor.newInstance(Dream.getInstance());
+                        Constructor<?> constructor = clazz.getDeclaredConstructor(Shark.class);
+                        service = (ServiceRegistryMethodProvider) constructor.newInstance(Shark.getInstance());
                     } catch (NoSuchMethodException exception) {
                         service = (ServiceRegistryMethodProvider) clazz.getDeclaredConstructor().newInstance();
                     } catch (Exception exception) {
@@ -59,10 +61,30 @@ public class ServiceRegistry {
     }
 
     public void initialize() {
+        Logger.legacyPrint("");
+        Logger.legacyPrint("Initializing &9&l" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE &rservices...");
+        Logger.legacyPrint("&7&m------------------------------------");
+
         this.services.forEach(service -> {
             service.initialize();
-            Logger.info("<aqua>" + service.getClass().getSimpleName() + " <green>✔");
+            Logger.info("<blue>" + service.getClass().getSimpleName() + " <green>✔");
         });
+
+        Logger.legacyPrint("&7&m------------------------------------");
+        Logger.legacyPrint("");
+
+        Arrays.asList(
+                "&9&l\uD83E\uDD88 " + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE \uD83E\uDD88",
+                "",
+                " &f▢ Author: &9" + Constants.AUTHOR,
+                " &f▢ Version: &9" + Constants.VERSION,
+                "",
+                " &f▢ Discord: &9" + Constants.DISCORD,
+                " &f▢ GitHub: &9" + Constants.GITHUB,
+                "",
+                " &f▢ Spigot: &9" + Constants.SPIGOT,
+                ""
+        ).forEach(Logger::legacyPrint);
     }
 
     /**
@@ -81,5 +103,7 @@ public class ServiceRegistry {
                     }
                 })
         ;
+
+        Logger.legacyPrint("&c" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE &fhas been disabled.");
     }
 }

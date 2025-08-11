@@ -1,6 +1,6 @@
 package me.emmy.plugin.user.user;
 
-import me.emmy.plugin.Dream;
+import me.emmy.plugin.Shark;
 import me.emmy.plugin.user.User;
 import me.emmy.plugin.user.UserService;
 import me.emmy.plugin.util.Logger;
@@ -14,21 +14,21 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 10/08/2025
  */
 public class UserListener implements Listener {
     @EventHandler
     private void onLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
-        User user = Dream.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
         this.checkUser(user, player);
     }
 
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        User user = Dream.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
         event.joinMessage(null);
@@ -37,21 +37,21 @@ public class UserListener implements Listener {
     @EventHandler
     private void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        User user = Dream.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
         event.quitMessage(null);
 
-        Dream.getInstance().getService(UserService.class).removeUser(user);
+        Shark.getInstance().getService(UserService.class).removeUser(user);
     }
 
     @EventHandler
     private void onKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
-        User user = Dream.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
-        Dream.getInstance().getService(UserService.class).removeUser(user);
+        Shark.getInstance().getService(UserService.class).removeUser(user);
     }
 
     /**
@@ -65,7 +65,7 @@ public class UserListener implements Listener {
         if (user == null) {
             Logger.warn("User not found for player " + player.getName() + ". Creating a new user.");
             user = new User(player.getUniqueId(), player.getName());
-            Dream.getInstance().getService(UserService.class).addUser(user);
+            Shark.getInstance().getService(UserService.class).addUser(user);
         }
     }
 }

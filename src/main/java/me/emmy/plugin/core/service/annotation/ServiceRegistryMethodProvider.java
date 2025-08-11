@@ -1,6 +1,6 @@
 package me.emmy.plugin.core.service.annotation;
 
-import me.emmy.plugin.Dream;
+import me.emmy.plugin.Shark;
 
 /**
  * This interface represents a service registry data structure.
@@ -9,7 +9,7 @@ import me.emmy.plugin.Dream;
  * Service classes require the {@link ServiceRegistryPriority} annotation.
  *
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 public interface ServiceRegistryMethodProvider {
@@ -26,11 +26,11 @@ public interface ServiceRegistryMethodProvider {
     }
 
     /**
-     * Returns the instance of the Dream plugin.
+     * Returns the instance of the Shark plugin.
      *
-     * @return the Dream plugin instance
+     * @return the Shark plugin instance
      */
-    default Dream getPlugin() {
-        return Dream.getInstance();
+    default Shark getPlugin() {
+        return Shark.getInstance();
     }
 }

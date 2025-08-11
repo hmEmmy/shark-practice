@@ -1,6 +1,6 @@
 package me.emmy.plugin.core.parser.impl;
 
-import me.emmy.plugin.Dream;
+import me.emmy.plugin.Shark;
 import me.emmy.plugin.feature.kit.enums.KitCategory;
 import me.emmy.plugin.feature.kit.enums.KitSetting;
 import me.emmy.plugin.feature.kit.Kit;
@@ -15,11 +15,11 @@ import java.util.List;
 
 /**
  * @author Emmy
- * @project Dream
+ * @project Shark
  * @since 09/08/2025
  */
 public class KitParser implements Parser<Kit> {
-    private final FileConfiguration kitConfig = Dream.getInstance().getService(ConfigService.class).getKitsConfig();
+    private final FileConfiguration kitConfig = Shark.getInstance().getService(ConfigService.class).getKitsConfig();
 
     @Override
     public void configToModel(String path, Kit kit) {
@@ -58,7 +58,7 @@ public class KitParser implements Parser<Kit> {
                 .toList();
         this.kitConfig.set(path + ".settings", settingNames);
 
-        Dream.getInstance().getService(ConfigService.class).saveFileConfiguration(this.kitConfig);
+        Shark.getInstance().getService(ConfigService.class).saveFileConfiguration(this.kitConfig);
     }
 
     /**
