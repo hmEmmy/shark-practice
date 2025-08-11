@@ -71,8 +71,8 @@ public class SpawnService implements ServiceRegistryMethodProvider {
     /**
      * Teleports a player to the specified location type.
      *
-     * @param player        the player to teleport
-     * @param locationType  the type of location to teleport to
+     * @param player       the player to teleport
+     * @param locationType the type of location to teleport to
      */
     public void teleport(Player player, LocationType locationType) {
         Location location = this.locations.get(locationType);

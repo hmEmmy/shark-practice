@@ -5,8 +5,6 @@ import me.emmy.plugin.core.service.ServiceRegistry;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
-
 @Getter
 public class Dream extends JavaPlugin {
 
@@ -36,8 +34,6 @@ public class Dream extends JavaPlugin {
      */
     @SuppressWarnings("unchecked")
     public <T extends ServiceRegistryMethodProvider> T getService(Class<T> clazz) {
-        return (T) this.serviceRegistry.getServices().stream().filter(service -> service.getClass().equals(clazz))
-                .findFirst()
-                .orElse(null);
+        return (T) this.serviceRegistry.getServices().stream().filter(service -> service.getClass().equals(clazz)).findFirst().orElse(null);
     }
 }

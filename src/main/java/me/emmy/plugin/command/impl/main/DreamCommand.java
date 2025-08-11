@@ -18,6 +18,7 @@ import java.util.Arrays;
  * @project Dream
  * @since 10/08/2025
  */
+@SuppressWarnings("unused")
 @CommandAlias("dream|practice|dpractice")
 public class DreamCommand extends BaseCommand {
     @Default

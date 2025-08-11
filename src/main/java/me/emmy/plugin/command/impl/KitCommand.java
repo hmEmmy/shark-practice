@@ -6,10 +6,9 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import me.emmy.plugin.Dream;
-import me.emmy.plugin.feature.kit.KitService;
 import me.emmy.plugin.feature.kit.Kit;
+import me.emmy.plugin.feature.kit.KitService;
 import me.emmy.plugin.util.CC;
-import me.emmy.plugin.util.Constants;
 import me.emmy.plugin.util.ItemStackUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,6 +21,7 @@ import java.util.List;
  * @project Dream
  * @since 10/08/2025
  */
+@SuppressWarnings("unused")
 @CommandAlias("kit")
 @CommandPermission("dream.command.kit")
 public class KitCommand extends BaseCommand {
@@ -100,14 +100,7 @@ public class KitCommand extends BaseCommand {
     }
 
     @Subcommand("getinv")
-    public void onGetInventory(CommandSender sender, String kitName) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(CC.translateLegacy("&cThis command can only be used by players."));
-            return;
-        }
-
-        Player player = (Player) sender;
-
+    public void onGetInventory(Player player, String kitName) {
         KitService kitService = Dream.getInstance().getService(KitService.class);
         Kit kit = kitService.getKit(kitName);
 
