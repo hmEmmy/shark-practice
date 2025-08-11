@@ -1,6 +1,8 @@
 package me.emmy.plugin.user.listener;
 
 import me.emmy.plugin.Shark;
+import me.emmy.plugin.feature.hotbar.HotbarService;
+import me.emmy.plugin.feature.hotbar.enums.HotbarType;
 import me.emmy.plugin.feature.spawn.SpawnService;
 import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.user.User;
@@ -36,6 +38,7 @@ public class UserListener implements Listener {
         event.joinMessage(null);
 
         Shark.getInstance().getService(SpawnService.class).teleport(player, LocationType.LOBBY);
+        Shark.getInstance().getService(HotbarService.class).applyHotbarItems(player, HotbarType.LOBBY);
     }
 
     @EventHandler

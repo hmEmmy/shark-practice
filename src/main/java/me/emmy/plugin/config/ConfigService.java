@@ -26,11 +26,13 @@ public class ConfigService implements ServiceRegistryMethodProvider {
             "settings.yml",
 
             "cache/kits.yml",
+            "settings/hotbar.yml",
     };
 
     private FileConfiguration localeConfig;
     private FileConfiguration settingsConfig;
     private FileConfiguration kitsConfig;
+    private FileConfiguration hotbarConfig;
 
     @Override
     public void initialize() {
@@ -106,6 +108,7 @@ public class ConfigService implements ServiceRegistryMethodProvider {
         this.localeConfig = this.getFileConfiguration("locale.yml");
         this.settingsConfig = this.getFileConfiguration("settings.yml");
         this.kitsConfig = this.getFileConfiguration("cache/kits.yml");
+        this.hotbarConfig = this.getFileConfiguration("settings/hotbar.yml");
 
         if (this.localeConfig == null || this.settingsConfig == null) {
             Logger.error("Failed to load configuration files.");

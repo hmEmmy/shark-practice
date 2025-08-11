@@ -1,0 +1,64 @@
+LOBBY:
+  UNRANKED_QUEUE:
+    display-name: "<gradient:blue:white>Unranked Queue</gradient> <gray>(Right Click)"
+    command: "unranked"
+    material: "IRON_SWORD"
+    slot: 0
+  RANKED_QUEUE:
+    display-name: "<gradient:blue:white>Ranked Queue <gray>(Right Click)"
+    command: "ranked"
+    material: "DIAMOND_SWORD"
+    slot: 1
+  LAYOUT_EDITOR:
+    display-name: "<gradient:blue:white>Layout Editor <gray>(Right Click)"
+    command: "editor"
+    material: "BOOK"
+    slot: 2
+  CREATE_PARTY:
+    display-name: "<gradient:blue:white>Create Party <gray>(Right Click)"
+    command: "createparty"
+    material: "NAME_TAG"
+    slot: 4
+  PREFERENCES:
+    display-name: "<gradient:blue:white>Preferences <gray>(Right Click)"
+    command: "settings"
+    material: "SPRUCE_DOOR"
+    slot: 8
+
+QUEUE:
+  LEAVE_QUEUE:
+    display-name: "<red>Leave Queue <gray>(Right Click)"
+    command: "leavequeue"
+    material: "RED_BED"
+    slot: 8
+
+PARTY:
+  LEAVE_PARTY:
+    display-name: "<red>Leave Party <gray>(Right Click)"
+    command: "leaveparty"
+    material: "RED_BED"
+    slot: 8
+
+EVENT:
+  JOIN_EVENT:
+    display-name: "<gradient:blue:white>Join Event <gray>(Right Click)"
+    command: "joinevent"
+    material: "PAPER"
+    slot: 0
+  LEAVE_EVENT:
+    display-name: "<red>Leave Event <gray>(Right Click)"
+    command: "leaveevent"
+    material: "RED_BED"
+    slot: 8
+
+TOURNAMENT:
+  JOIN_TOURNAMENT:
+    display-name: "<gradient:blue:white>Join Tournament <gray>(Right Click)"
+    command: "jointournament"
+    material: "PAPER"
+    slot: 0
+  LEAVE_TOURNAMENT:
+    display-name: "<red>Leave Tournament <gray>(Right Click)"
+    command: "leavetournament"
+    material: "RED_BED"
+    slot: 8
