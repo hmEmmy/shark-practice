@@ -1,11 +1,11 @@
-package me.emmy.plugin.core.parser.impl;
+package me.emmy.plugin.parser.impl;
 
 import me.emmy.plugin.Shark;
 import me.emmy.plugin.feature.kit.enums.KitCategory;
 import me.emmy.plugin.feature.kit.enums.KitSetting;
 import me.emmy.plugin.feature.kit.Kit;
-import me.emmy.plugin.core.property.config.ConfigService;
-import me.emmy.plugin.core.parser.Parser;
+import me.emmy.plugin.config.ConfigService;
+import me.emmy.plugin.parser.Parser;
 import me.emmy.plugin.util.Serializer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;

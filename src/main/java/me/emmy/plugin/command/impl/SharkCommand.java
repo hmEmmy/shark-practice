@@ -3,7 +3,7 @@ package me.emmy.plugin.command.impl;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import me.emmy.plugin.Shark;
-import me.emmy.plugin.core.property.config.ConfigService;
+import me.emmy.plugin.config.ConfigService;
 import me.emmy.plugin.feature.spawn.SpawnService;
 import me.emmy.plugin.feature.spawn.enums.LocationType;
 import me.emmy.plugin.util.CC;

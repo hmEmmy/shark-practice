@@ -1,7 +1,7 @@
-package me.emmy.plugin.core.parser.impl;
+package me.emmy.plugin.parser.impl;
 
 import me.emmy.plugin.feature.arena.Arena;
-import me.emmy.plugin.core.parser.Parser;
+import me.emmy.plugin.parser.Parser;
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**

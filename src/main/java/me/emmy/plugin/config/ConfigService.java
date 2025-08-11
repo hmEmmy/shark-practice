@@ -1,4 +1,4 @@
-package me.emmy.plugin.core.property.config;
+package me.emmy.plugin.config;
 
 import lombok.Getter;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;

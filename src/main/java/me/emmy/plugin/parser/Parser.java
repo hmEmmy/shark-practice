@@ -1,4 +1,4 @@
-package me.emmy.plugin.core.parser;
+package me.emmy.plugin.parser;
 
 /**
  * @author Emmy

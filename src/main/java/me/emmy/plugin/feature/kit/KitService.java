@@ -1,8 +1,8 @@
 package me.emmy.plugin.feature.kit;
 
 import lombok.Getter;
-import me.emmy.plugin.core.parser.impl.KitParser;
-import me.emmy.plugin.core.property.config.ConfigService;
+import me.emmy.plugin.parser.impl.KitParser;
+import me.emmy.plugin.config.ConfigService;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;

@@ -1,4 +1,4 @@
-package me.emmy.plugin.core.property.validator;
+package me.emmy.plugin.core.validator;
 
 import lombok.Getter;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
