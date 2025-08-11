@@ -2,6 +2,7 @@ package me.emmy.plugin.command.impl.main;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import me.emmy.plugin.Dream;
@@ -32,6 +33,7 @@ public class DreamCommand extends BaseCommand {
     }
 
     @Subcommand("reload")
+    @CommandPermission("dream.command.kit")
     public void onReload(CommandSender sender) {
         Dream.getInstance().getService(ConfigService.class).reloadConfigs();
         sender.sendMessage(CC.translateLegacy("&a" + Constants.PLUGIN_NAME + " has been reloaded successfully."));

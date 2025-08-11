@@ -2,12 +2,14 @@ package me.emmy.plugin.command.impl;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import me.emmy.plugin.Dream;
 import me.emmy.plugin.feature.kit.KitService;
 import me.emmy.plugin.feature.kit.Kit;
 import me.emmy.plugin.util.CC;
+import me.emmy.plugin.util.Constants;
 import me.emmy.plugin.util.ItemStackUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -21,6 +23,7 @@ import java.util.List;
  * @since 10/08/2025
  */
 @CommandAlias("kit")
+@CommandPermission("dream.command.kit")
 public class KitCommand extends BaseCommand {
 
     @Default
