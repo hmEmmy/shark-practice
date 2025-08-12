@@ -38,6 +38,7 @@ public class UserListener implements Listener {
         Player player = event.getPlayer();
         User user = this.plugin.getService(UserService.class).getUser(player.getUniqueId());
         this.checkUser(user, player);
+        user.load();
     }
 
     @EventHandler

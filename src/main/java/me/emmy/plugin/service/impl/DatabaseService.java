@@ -22,7 +22,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 @ServiceRegistryPriority(value = 20)
 public class DatabaseService implements ServiceRegistryMethodProvider {
     private MongoClient mongoClient;
-    private MongoDatabase database;
+    private MongoDatabase mongoDatabase;
 
     @Override
     public void initialize() {
@@ -48,9 +48,9 @@ public class DatabaseService implements ServiceRegistryMethodProvider {
                     .build();
 
             this.mongoClient = MongoClients.create(settings);
-            this.database = mongoClient.getDatabase(databaseName);
+            this.mongoDatabase = mongoClient.getDatabase(databaseName);
 
-            this.database.listCollectionNames().first();
+            this.mongoDatabase.listCollectionNames().first();
 
         } catch (Exception exception) {
             Logger.exception("Failed to connect to MongoDB database: " + databaseName, exception);

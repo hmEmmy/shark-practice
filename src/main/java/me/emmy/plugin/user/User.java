@@ -2,6 +2,7 @@ package me.emmy.plugin.user;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.emmy.plugin.Shark;
 import me.emmy.plugin.user.enums.UserState;
 
 import java.util.UUID;
@@ -33,12 +34,10 @@ public class User {
     }
 
     public void save() {
-        // Logic to save the user data, e.g., to a database or file.
-        // This is a placeholder for the actual implementation.
+        Shark.getInstance().getService(UserService.class).saveUser(this);
     }
 
     public void load() {
-        // Logic to load the user data, e.g., from a database or file.
-        // This is a placeholder for the actual implementation.
+        Shark.getInstance().getService(UserService.class).loadUser(this);
     }
 }
