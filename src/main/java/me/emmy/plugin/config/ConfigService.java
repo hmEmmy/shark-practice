@@ -1,8 +1,8 @@
 package me.emmy.plugin.config;
 
 import lombok.Getter;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

@@ -1,8 +1,8 @@
 package me.emmy.plugin;
 
 import lombok.Getter;
-import me.emmy.plugin.core.service.ServiceRegistry;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.ServiceRegistry;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter

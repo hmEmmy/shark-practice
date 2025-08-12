@@ -1,8 +1,8 @@
 package me.emmy.plugin.feature.hotbar;
 
 import me.emmy.plugin.config.ConfigService;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.feature.hotbar.enums.HotbarType;
 import me.emmy.plugin.feature.hotbar.record.HotbarItem;
 import me.emmy.plugin.util.CC;

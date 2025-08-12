@@ -1,7 +1,7 @@
-package me.emmy.plugin.core.service.impl;
+package me.emmy.plugin.service.impl;
 
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.feature.hotbar.listener.HotbarListener;
 import me.emmy.plugin.feature.spawn.listener.SpawnListener;
 import me.emmy.plugin.library.menu.MenuListener;

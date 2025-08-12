@@ -1,12 +1,12 @@
-package me.emmy.plugin.core.service;
+package me.emmy.plugin.service;
 
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ScanResult;
 import lombok.Getter;
 import me.emmy.plugin.Shark;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.annotation.ServiceRegistryPriority;
 import me.emmy.plugin.util.Constants;
 import me.emmy.plugin.util.Logger;
 

@@ -1,4 +1,4 @@
-package me.emmy.plugin.core.service.annotation;
+package me.emmy.plugin.service.annotation;
 
 import me.emmy.plugin.Shark;
 

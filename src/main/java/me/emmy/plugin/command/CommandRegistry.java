@@ -6,8 +6,8 @@ import me.emmy.plugin.command.impl.SharkCommand;
 import me.emmy.plugin.command.impl.management.BuildModeCommand;
 import me.emmy.plugin.command.impl.queue.RankedCommand;
 import me.emmy.plugin.command.impl.queue.UnrankedCommand;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
-import me.emmy.plugin.core.service.annotation.ServiceRegistryPriority;
+import me.emmy.plugin.service.annotation.ServiceRegistryMethodProvider;
+import me.emmy.plugin.service.annotation.ServiceRegistryPriority;
 
 import java.util.Arrays;
 
