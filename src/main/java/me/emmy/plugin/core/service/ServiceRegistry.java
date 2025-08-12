@@ -61,30 +61,30 @@ public class ServiceRegistry {
     }
 
     public void initialize() {
-        Logger.legacyPrint("");
-        Logger.legacyPrint("Initializing &9&l" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE &rservices...");
-        Logger.legacyPrint("&7&m------------------------------------");
+        Logger.print("");
+        Logger.print("Initializing <blue><bold>" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE <reset>services...");
+        Logger.print("<gray><strikethrough>------------------------------------");
 
         this.services.forEach(service -> {
             service.initialize();
             Logger.info("<blue>" + service.getClass().getSimpleName() + " <green>✔");
         });
 
-        Logger.legacyPrint("&7&m------------------------------------");
-        Logger.legacyPrint("");
+        Logger.print("<gray><strikethrough>------------------------------------");
+        Logger.print("");
 
         Arrays.asList(
-                "&9&l\uD83E\uDD88 " + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE \uD83E\uDD88",
+                "<blue><bold>\uD83E\uDD88 " + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE \uD83E\uDD88",
                 "",
-                " &f▢ Author: &9" + Constants.AUTHOR,
-                " &f▢ Version: &9" + Constants.VERSION,
+                " <white>▢ Author: <blue>" + Constants.AUTHOR,
+                " <white>▢ Version: <blue>" + Constants.VERSION,
                 "",
-                " &f▢ Discord: &9" + Constants.DISCORD,
-                " &f▢ GitHub: &9" + Constants.GITHUB,
+                " <white>▢ Discord: <blue>" + Constants.DISCORD,
+                " <white>▢ GitHub: <blue>" + Constants.GITHUB,
                 "",
-                " &f▢ Spigot: &9" + Constants.SPIGOT,
+                " <white>▢ Spigot: <blue>" + Constants.SPIGOT,
                 ""
-        ).forEach(Logger::legacyPrint);
+        ).forEach(Logger::print);
     }
 
     /**
@@ -104,6 +104,6 @@ public class ServiceRegistry {
                 })
         ;
 
-        Logger.legacyPrint("&c" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE &fhas been disabled.");
+        Logger.print("<red>" + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE <white>has been disabled.");
     }
 }

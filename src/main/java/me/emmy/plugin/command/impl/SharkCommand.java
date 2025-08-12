@@ -25,23 +25,23 @@ public class SharkCommand extends BaseCommand {
     public void onExecute(CommandSender sender) {
         Arrays.asList(
                 "",
-                "&9&l\uD83E\uDD88 " + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE \uD83E\uDD88",
+                "<blue><bold>\uD83E\uDD88 " + Constants.PLUGIN_NAME.toUpperCase() + " PRACTICE \uD83E\uDD88",
                 "",
-                " &f▢ &9Author: &f" + Constants.AUTHOR,
-                " &f▢ &9Version: &f" + Constants.VERSION,
+                " <white>▢ <blue>Author: <white>" + Constants.AUTHOR,
+                " <white>▢ <blue>Version: <white>" + Constants.VERSION,
                 "",
-                " &f▢ &9GitHub: &f" + Constants.GITHUB,
-                " &f▢ &9Discord: &f" + Constants.DISCORD,
+                " <white>▢ <blue>GitHub: <white>" + Constants.GITHUB,
+                " <white>▢ <blue>Discord: <white>" + Constants.DISCORD,
                 ""
-        ).forEach(line -> sender.sendMessage(CC.translateLegacy(line)));
+        ).forEach(line -> sender.sendMessage(CC.translate(line)));
     }
 
     @Subcommand("reload")
     @CommandPermission("shark.command.kit")
     public void onReload(CommandSender sender) {
-        sender.sendMessage(CC.translateLegacy("&fReloading &b&l" + Constants.PLUGIN_NAME + " PRACTICE &f..."));
+        sender.sendMessage(CC.translate("<white>Reloading <blue><bold>" + Constants.PLUGIN_NAME + " PRACTICE <white>..."));
         Shark.getInstance().getService(ConfigService.class).reloadConfigs();
-        sender.sendMessage(CC.translateLegacy("&aSuccessfully reloaded &b&l" + Constants.PLUGIN_NAME + " PRACTICE &a!"));
+        sender.sendMessage(CC.translate("<green>Successfully reloaded <blue><bold>" + Constants.PLUGIN_NAME + " PRACTICE <green>!"));
     }
 
     @Subcommand("setspawn")
@@ -51,11 +51,11 @@ public class SharkCommand extends BaseCommand {
         try {
             locationType = LocationType.valueOf(type.name().toUpperCase());
         } catch (IllegalArgumentException exception) {
-            player.sendMessage(CC.translateLegacy("&cInvalid spawn type specified! Valid types are: " + Arrays.toString(LocationType.values())));
+            player.sendMessage(CC.translate("<red>Invalid spawn type specified! Valid types are: " + Arrays.toString(LocationType.values())));
             return;
         }
 
         Shark.getInstance().getService(SpawnService.class).updateLocation(locationType, player.getLocation());
-        player.sendMessage(CC.translateLegacy("&aSpawn location for &b" + locationType.name().toLowerCase().replace("_", " ") + " &aset successfully updated!"));
+        player.sendMessage(CC.translate("<green>Spawn location for <blue>" + locationType.name().toLowerCase().replace("_", " ") + " <green>set successfully updated!"));
     }
 }

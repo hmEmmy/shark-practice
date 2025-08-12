@@ -18,8 +18,8 @@ public class Logger {
      *
      * @param message the message to log.
      */
-    public void legacyPrint(String message) {
-        consoleSender.sendMessage(CC.translateLegacy(message));
+    public void print(String message) {
+        consoleSender.sendMessage(CC.translate(message));
     }
 
     /**

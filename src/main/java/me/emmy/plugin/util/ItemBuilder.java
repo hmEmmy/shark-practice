@@ -72,6 +72,24 @@ public class ItemBuilder {
         return this;
     }
 
+    /**
+     * Sets the item to be unbreakable.
+     *
+     * @param unbreakable true if the item should be unbreakable, false otherwise
+     * @return the ItemBuilder instance for method chaining
+     */
+    public ItemBuilder unbreakable(boolean unbreakable) {
+        ItemMeta meta = this.itemStack.getItemMeta();
+        if (meta == null) {
+            meta = this.itemStack.getItemMeta();
+        }
+
+        meta.setUnbreakable(unbreakable);
+        this.itemStack.setItemMeta(meta);
+
+        return this;
+    }
+
     public ItemBuilder lore(List<String> lore) {
         List<Component> toSet = lore.stream()
                 .map(miniMessage::deserialize)

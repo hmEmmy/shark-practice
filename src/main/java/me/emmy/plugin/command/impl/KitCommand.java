@@ -30,17 +30,17 @@ public class KitCommand extends BaseCommand {
     public void onHelp(CommandSender sender) {
         Arrays.asList(
                 "",
-                "&9&lKit Commands",
-                " &f▢ &9/kit list &f- &7List all available kits",
-                " &f▢ &9/kit info &f<name> &8| &7View information about a kit.",
-                " &f▢ &9/kit create &f<name> &8| &7Create a new kit.",
-                " &f▢ &9/kit delete &f<name> &8| &7Delete an existing kit.",
-                " &f▢ &9/kit toggle &f<name> &8| &7Enable or disable a kit.",
-                " &f▢ &9/kit getinv &f<name> &8| &7Get the inventory of a kit.",
-                " &f▢ &9/kit setinv &f<name> &8| &7Set the inventory for a kit.",
-                " &f▢ &9/kit save &f<name> &8| &7Save the current kit configuration.",
+                "<blue><bold>Kit Commands",
+                " <white>▢ <blue>/kit list <white>- <gray>List all available kits",
+                " <white>▢ <blue>/kit info <white><name> <dark_gray>| <gray>View information about a kit.",
+                " <white>▢ <blue>/kit create <white><name> <dark_gray>| <gray>Create a new kit.",
+                " <white>▢ <blue>/kit delete <white><name> <dark_gray>| <gray>Delete an existing kit.",
+                " <white>▢ <blue>/kit toggle <white><name> <dark_gray>| <gray>Enable or disable a kit.",
+                " <white>▢ <blue>/kit getinv <white><name> <dark_gray>| <gray>Get the inventory of a kit.",
+                " <white>▢ <blue>/kit setinv <white><name> <dark_gray>| <gray>Set the inventory for a kit.",
+                " <white>▢ <blue>/kit save <white><name> <dark_gray>| <gray>Save the current kit configuration.",
                 ""
-        ).forEach(line -> sender.sendMessage(CC.translateLegacy(line)));
+        ).forEach(line -> sender.sendMessage(CC.translate(line)));
     }
 
     @Subcommand("list")
@@ -49,10 +49,10 @@ public class KitCommand extends BaseCommand {
 
         sender.sendMessage("");
         if (kits.isEmpty()) {
-            sender.sendMessage(CC.translateLegacy("&cNo kits available."));
+            sender.sendMessage(CC.translate("<red>No kits available."));
         } else {
-            sender.sendMessage(CC.translateLegacy("&9&lAvailable Kits:"));
-            kits.forEach(kit -> sender.sendMessage(CC.translateLegacy(" &7▢ &9" + kit.getName() + " &8- &7" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled"))));
+            sender.sendMessage(CC.translate("<blue><bold>Available Kits:"));
+            kits.forEach(kit -> sender.sendMessage(CC.translate(" <gray>▢ <blue>" + kit.getName() + " <dark_gray>- <gray>" + (kit.isEnabled() ? "<green>Enabled" : "<red>Disabled"))));
         }
         sender.sendMessage("");
     }
@@ -63,7 +63,7 @@ public class KitCommand extends BaseCommand {
         Kit kit = new Kit(kitName);
         kitService.createKit(kit);
 
-        sender.sendMessage(CC.translateLegacy("&aKit &9" + kitName + " &acreated successfully."));
+        sender.sendMessage(CC.translate("<green>Kit <blue>" + kitName + " <green>created successfully."));
     }
 
     @Subcommand("delete")
@@ -75,12 +75,12 @@ public class KitCommand extends BaseCommand {
                 .orElse(null);
 
         if (kit == null) {
-            sender.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            sender.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
         kitService.removeKit(kit);
-        sender.sendMessage(CC.translateLegacy("&aKit &9" + kitName + " &adeleted successfully."));
+        sender.sendMessage(CC.translate("<green>Kit <blue>" + kitName + " <green>deleted successfully."));
     }
 
     @Subcommand("toggle")
@@ -89,14 +89,14 @@ public class KitCommand extends BaseCommand {
         Kit kit = kitService.getKit(kitName);
 
         if (kit == null) {
-            sender.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            sender.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
         kit.setEnabled(!kit.isEnabled());
         kitService.saveKit(kit);
 
-        sender.sendMessage(CC.translateLegacy("&aKit &9" + kitName + " &ais now " + (kit.isEnabled() ? "&aenabled" : "&cdisabled") + "."));
+        sender.sendMessage(CC.translate("<green>Kit <blue>" + kitName + " <green>is now " + (kit.isEnabled() ? "<green>enabled" : "<red>disabled") + "."));
     }
 
     @Subcommand("getinv")
@@ -105,13 +105,13 @@ public class KitCommand extends BaseCommand {
         Kit kit = kitService.getKit(kitName);
 
         if (kit == null) {
-            player.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            player.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
         player.getInventory().setContents(kit.getItems());
         player.getInventory().setArmorContents(kit.getArmor());
-        player.sendMessage(CC.translateLegacy("&fSuccessfully retrieved inventory for kit &9" + kitName + "&f."));
+        player.sendMessage(CC.translate("<white>Successfully retrieved inventory for kit <blue>" + kitName + "<white>."));
     }
 
     @Subcommand("setinv")
@@ -120,7 +120,7 @@ public class KitCommand extends BaseCommand {
         Kit kit = kitService.getKit(kitName);
 
         if (kit == null) {
-            player.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            player.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
@@ -128,7 +128,7 @@ public class KitCommand extends BaseCommand {
         kit.setArmor(ItemStackUtil.cloneItemStackArray(player.getInventory().getArmorContents()));
         kitService.saveKit(kit);
 
-        player.sendMessage(CC.translateLegacy("&fSuccessfully set inventory for kit &9" + kitName + "&f."));
+        player.sendMessage(CC.translate("<white>Successfully set inventory for kit <blue>" + kitName + "<white>."));
     }
 
     @Subcommand("info")
@@ -137,25 +137,25 @@ public class KitCommand extends BaseCommand {
         Kit kit = kitService.getKit(kitName);
 
         if (kit == null) {
-            sender.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            sender.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
         Arrays.asList(
                 "",
-                "&9&lKit Information",
-                " &f▢ &9Name: &f" + kit.getName(),
-                " &f▢ &9Description: &f" + (kit.getDescription() != null ? kit.getDescription() : "None"),
-                " &f▢ &9Disclaimer: &f" + (kit.getDisclaimer() != null ? kit.getDisclaimer() : "None"),
-                " &f▢ &9Material: &f" + (kit.getMaterial() != null ? kit.getMaterial() : "None"),
-                " &f▢ &9Enabled: &f" + (kit.isEnabled() ? "&aYes" : "&cNo"),
-                " &f▢ &9Category: &f" + (kit.getCategory() != null ? kit.getCategory().name() : "None"),
-                " &f▢ &9Settings: &f" + (kit.getSettings() != null && !kit.getSettings().isEmpty() ? kit.getSettings().stream()
+                "<blue><bold>Kit Information",
+                " <white>▢ <blue>Name: <white>" + kit.getName(),
+                " <white>▢ <blue>Description: <white>" + (kit.getDescription() != null ? kit.getDescription() : "None"),
+                " <white>▢ <blue>Disclaimer: <white>" + (kit.getDisclaimer() != null ? kit.getDisclaimer() : "None"),
+                " <white>▢ <blue>Material: <white>" + (kit.getMaterial() != null ? kit.getMaterial() : "None"),
+                " <white>▢ <blue>Enabled: <white>" + (kit.isEnabled() ? "<green>Yes" : "<red>No"),
+                " <white>▢ <blue>Category: <white>" + (kit.getCategory() != null ? kit.getCategory().name() : "None"),
+                " <white>▢ <blue>Settings: <white>" + (kit.getSettings() != null && !kit.getSettings().isEmpty() ? kit.getSettings().stream()
                         .map(Enum::name)
                         .reduce((s1, s2) -> s1 + ", " + s2)
                         .orElse("None") : "None"),
                 ""
-        ).forEach(line -> sender.sendMessage(CC.translateLegacy(line)));
+        ).forEach(line -> sender.sendMessage(CC.translate(line)));
     }
 
     @Subcommand("save")
@@ -164,11 +164,11 @@ public class KitCommand extends BaseCommand {
         Kit kit = kitService.getKit(kitName);
 
         if (kit == null) {
-            sender.sendMessage(CC.translateLegacy("&cKit &9" + kitName + " &cnot found."));
+            sender.sendMessage(CC.translate("<red>Kit <blue>" + kitName + " <red>not found."));
             return;
         }
 
         kitService.saveKit(kit);
-        sender.sendMessage(CC.translateLegacy("&aKit &9" + kitName + " &asaved successfully."));
+        sender.sendMessage(CC.translate("<green>Kit <blue>" + kitName + " <green>saved successfully."));
     }
 }

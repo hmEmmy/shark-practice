@@ -106,6 +106,7 @@ public class HotbarService implements ServiceRegistryMethodProvider {
         return new ItemBuilder(item.material())
                 .name(item.displayName())
                 .hideMeta()
+                .unbreakable(true)
                 .build();
     }
 

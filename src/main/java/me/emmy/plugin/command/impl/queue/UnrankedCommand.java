@@ -15,6 +15,6 @@ import org.bukkit.entity.Player;
 public class UnrankedCommand extends BaseCommand {
     @Default
     public void onExecute(Player player) {
-        player.sendMessage(CC.translateLegacy("&cNot yet implemented!"));
+        player.sendMessage(CC.translate("<red>Not yet implemented!"));
     }
 }
