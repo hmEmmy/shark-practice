@@ -19,10 +19,10 @@ public class ListenerService implements ServiceRegistryMethodProvider {
     @Override
     public void initialize() {
         Arrays.asList(
-                new UserListener(),
-                new HotbarListener(),
-                new SpawnListener(),
-                new MenuListener()
+                new UserListener(this.getPlugin()),
+                new HotbarListener(this.getPlugin()),
+                new SpawnListener(this.getPlugin()),
+                new MenuListener(this.getPlugin())
         ).forEach(listener -> this.getPlugin().getServer().getPluginManager().registerEvents(listener, this.getPlugin()));
     }
 }

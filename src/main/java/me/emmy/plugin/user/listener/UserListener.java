@@ -22,43 +22,54 @@ import org.bukkit.event.player.PlayerQuitEvent;
  * @since 10/08/2025
  */
 public class UserListener implements Listener {
+    private final Shark plugin;
+
+    /**
+     * Constructor for the UserListener class.
+     *
+     * @param plugin the instance of the Shark plugin
+     */
+    public UserListener(Shark plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
     private void onLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
-        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = this.plugin.getService(UserService.class).getUser(player.getUniqueId());
         this.checkUser(user, player);
     }
 
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = this.plugin.getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
         event.joinMessage(null);
 
-        Shark.getInstance().getService(SpawnService.class).teleport(player, LocationType.LOBBY);
-        Shark.getInstance().getService(HotbarService.class).applyHotbarItems(player, HotbarType.LOBBY);
+        this.plugin.getService(SpawnService.class).teleport(player, LocationType.LOBBY);
+        this.plugin.getService(HotbarService.class).applyHotbarItems(player, HotbarType.LOBBY);
     }
 
     @EventHandler
     private void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = this.plugin.getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
         event.quitMessage(null);
 
-        Shark.getInstance().getService(UserService.class).removeUser(user);
+        this.plugin.getService(UserService.class).removeUser(user);
     }
 
     @EventHandler
     private void onKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
-        User user = Shark.getInstance().getService(UserService.class).getUser(player.getUniqueId());
+        User user = this.plugin.getService(UserService.class).getUser(player.getUniqueId());
         user.save();
 
-        Shark.getInstance().getService(UserService.class).removeUser(user);
+        this.plugin.getService(UserService.class).removeUser(user);
     }
 
     /**
@@ -72,7 +83,7 @@ public class UserListener implements Listener {
         if (user == null) {
             Logger.warn("User not found for player " + player.getName() + ". Creating a new user.");
             user = new User(player.getUniqueId(), player.getName());
-            Shark.getInstance().getService(UserService.class).addUser(user);
+            this.plugin.getService(UserService.class).addUser(user);
         }
     }
 }

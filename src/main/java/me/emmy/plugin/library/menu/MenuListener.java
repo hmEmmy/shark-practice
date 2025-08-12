@@ -12,6 +12,16 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class MenuListener implements Listener {
+    private final Shark plugin;
+
+    /**
+     * Constructor for the MenuListener class.
+     *
+     * @param plugin The plugin instance to associate with this listener.
+     */
+    public MenuListener(Shark plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onButtonPress(InventoryClickEvent event) {
@@ -59,7 +69,7 @@ public class MenuListener implements Listener {
                 }
 
                 if (event.isCancelled()) {
-                    Bukkit.getScheduler().runTaskLater(Shark.getInstance(), player::updateInventory, 1L);
+                    Bukkit.getScheduler().runTaskLater(this.plugin, player::updateInventory, 1L);
                 }
             } else {
                 if (event.getCurrentItem() != null) {

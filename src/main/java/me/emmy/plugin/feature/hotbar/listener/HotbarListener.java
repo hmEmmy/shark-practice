@@ -17,6 +17,17 @@ import org.bukkit.inventory.ItemStack;
  * @since 11/08/2025
  */
 public class HotbarListener implements Listener {
+    private final Shark plugin;
+
+    /**
+     * Constructor for the HotbarListener class.
+     *
+     * @param plugin the instance of the Shark plugin
+     */
+    public HotbarListener(Shark plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
     private void onInteract(PlayerInteractEvent event) {
         if (event.getHand() != EquipmentSlot.HAND) {
@@ -28,7 +39,7 @@ public class HotbarListener implements Listener {
             return;
         }
 
-        HotbarService hotbarService = Shark.getInstance().getService(HotbarService.class);
+        HotbarService hotbarService = this.plugin.getService(HotbarService.class);
 
         Player player = event.getPlayer();
         ItemStack clickedItem = player.getInventory().getItemInMainHand();
