@@ -69,10 +69,17 @@
     </repositories>
 
     <dependencies>
+        <!-- MongoDB Java Driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.11.1</version>
+        </dependency>
+
         <!-- ACF (Aikar's Command Framework) -->
         <dependency>
             <groupId>co.aikar</groupId>
-            <artifactId>acf-paper</artifactId> <!-- Don't forget to replace this -->
+            <artifactId>acf-paper</artifactId>
             <version>0.5.1-SNAPSHOT</version>
         </dependency>
 
