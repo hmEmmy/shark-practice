@@ -3,6 +3,7 @@ package me.emmy.plugin.command;
 import co.aikar.commands.BukkitCommandManager;
 import me.emmy.plugin.command.impl.KitCommand;
 import me.emmy.plugin.command.impl.SharkCommand;
+import me.emmy.plugin.command.impl.management.BuildModeCommand;
 import me.emmy.plugin.command.impl.queue.RankedCommand;
 import me.emmy.plugin.command.impl.queue.UnrankedCommand;
 import me.emmy.plugin.core.service.annotation.ServiceRegistryMethodProvider;
@@ -25,6 +26,8 @@ public class CommandRegistry implements ServiceRegistryMethodProvider {
                 new SharkCommand(),
 
                 new KitCommand(),
+
+                new BuildModeCommand(),
 
                 new UnrankedCommand(), new RankedCommand()
         ).forEach(this.commandManagerAPI::registerCommand);

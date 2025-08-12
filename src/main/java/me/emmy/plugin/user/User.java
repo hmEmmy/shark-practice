@@ -18,6 +18,8 @@ public class User {
     private String name;
     private UserState state;
 
+    private boolean buildMode = false;
+
     /**
      * Constructor for the User class.
      *
